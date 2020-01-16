@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zxl.springdemo.mvc.repository.UserMapper">
+    <select id="getList" resultType="org.zxl.springdemo.mvc.entity.User">
+		SELECT userId ,userName ,money from t_user
+	</select>
+
+	<!-- 将字符转换为枚举类型 -->
+	<resultMap id="userMap" type="org.zxl.springdemo.mvc.entity.User">
+		<id column="userId" jdbcType="INTEGER" property="userId"/>
+		<result column="userName" jdbcType="VARCHAR" property="userName"/>
+		<result column="money" jdbcType="INTEGER" property="money"/>
+		<result column="sex" jdbcType="INTEGER" property="sex"
+				javaType="org.zxl.springdemo.mvc.enums.UserSex"
+				typeHandler="org.zxl.springdemo.mvc.handlers.BaseEnumTypeHandler" />
+	</resultMap>
+
+	<select id="getList2" resultMap="userMap">
+		SELECT userId ,userName ,money,sex from t_user
+	</select>
+
+</mapper>

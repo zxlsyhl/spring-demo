@@ -1,0 +1,3 @@
+在resources下创建多级目录，zxl/com/springspringmvcmybatis/repository.
+
+getList2 方法将sex字段转换为枚举类型
